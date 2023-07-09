@@ -17,7 +17,7 @@ def print_red(text):
     print(text)
 
 # define openai key
-f = open("openai_key.txt", "r")
+f = open("key/openai_key.txt", "r")
 openai.api_key = f.read()
 
 

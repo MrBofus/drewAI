@@ -16,8 +16,10 @@ def print_red(text):
     # print('\033[0;31m' + text + '\033[0;0m')
     print(text)
 
-# define openai key (should probably take this out...)
-openai.api_key = "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"
+# define openai key
+f = open("openai_key.txt", "r")
+openai.api_key = f.read()
+
 
 
 

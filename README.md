@@ -12,12 +12,12 @@ There are two ways to build drewAI. The quickest method is running the python fi
 ```
 pyinstaller --onefile --noconsole .\drewsAI.py
 ```
-This will create a folder called 'dist' where it will put the executable. Run 'drewsAI.exe' to access the app.
+This will create a folder called `dist` where it will put the executable. If the `resources` directory is not automatically copied over to `dist`, sure to copy and paste the `resources` directory to the `dist` folder. Run 'drewsAI.exe' to access the app.
 
-Alternatively, the file 'drewsAI.py' can be run from console.
+Alternatively, the file `drewsAI.py` can be run from console.
 
 ## Usage
-To use, first obtain an API key from the openAI website. To do this, go to www.openai.com and make an account. You can then generate your own API key. Next, create a text file in the `resources` directory called `key.txt` and paste the key into the file.
+To use, first obtain an API key from the openAI website. To do this, go to www.openai.com and make an account. You can then generate your own API key. Next, create a folder called `key` in the parent `drewAI` directory. In this new folder, create a text file called `openai_key.txt` and paste the key into the file.
 
 You can now run the code or the executable and access the AI.
 

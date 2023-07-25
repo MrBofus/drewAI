@@ -1,4 +1,4 @@
-# Welcome to drewAI
+# Welcome to drewAI 🤠
 
 ## Installing the code
 Download the code by opening a console in the directory you want the code, and install by running:

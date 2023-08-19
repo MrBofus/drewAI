@@ -170,6 +170,7 @@ class app_window():
                 # reset 'generate' and 'unzoom' buttons
                 self.window['-GENERATE-'].update("generate image")
                 self.window['-UNZOOM-'].update("unzoom")
+                self.window['-EXP-'].update("experimental mode")
 
                 # update the image to the current value of 'n'
                 # (it's a try/except because it doesn't work without it
@@ -244,7 +245,7 @@ class requests_and_events_parser():
             
             # if the case is 2 from the queue, enter this block
             elif requests['case'] == 2:
-                if print_verbose: ai.print_red('received case 1\n')
+                if print_verbose: ai.print_red('received case 2\n')
 
                 # run experimental function
                 _ = ai.experimental_function('resources/generated_images/img' + str(requests['n']-2) + '.png', 

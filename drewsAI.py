@@ -277,7 +277,7 @@ rqs = requests_and_events_parser(queue)
 
 # define the app thread and events parser threads
 app_thread = tr.CustomThread(app.run_app, app.err)
-rqs_thread = tr.CustomThread(rqs.run_parse, app.err)
+rqs_thread = tr.CustomThread(rqs.run_parse, rqs.err)
 
 # start the threads
 if print_verbose: print('starting threads')

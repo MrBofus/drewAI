@@ -114,6 +114,35 @@ class app_window():
                     # if text box is empty or if another button was pressed, pass
                     pass
             
+
+            # if the 'experimental mode' button is pressed, enter this block
+            elif event == "-EXP-":
+                if print_verbose: ar.print_green('entered case 2')
+
+                # as long as the prompt is not non-zero, and another button is not
+                # pressed, enter this block
+                if os.path.isfile('resources/generated_images/img' + str(self.n-2) + '.png') and self.bpress == 0:
+                    
+                    # change text on 'unzoom' button to 'loading...'
+                    self.window['-EXP-'].update("loading...")
+                    # refresh window, updating the graphics
+                    self.window.refresh()
+                    
+                    # set case to one and the prompt to whatever string is in text box
+                    case = 2
+                    prompt = values['-PROMPT-']
+                    
+                    # incriment n, inform the class a button was pressed, and
+                    # set variable to check for updated image to 'true'
+                    self.n += 1
+                    self.bpress = 3
+                    self.check = True
+                    
+                else:
+                    # if text box is empty or if another button was pressed, pass
+                    pass
+            
+
             # if the 'x' in the top right of the GUI is pressed, enter this block
             elif event == sg.WIN_CLOSED:
 
@@ -213,6 +242,15 @@ class requests_and_events_parser():
                 # and save it to an image name correponding to 'n'
                 _ = ai.perturb_image('resources/generated_images/img' + str(requests['n']-1) + '.png', requests['prompt'], requests['n'])
             
+            # if the case is 2 from the queue, enter this block
+            elif requests['case'] == 2:
+                if print_verbose: ai.print_red('received case 1\n')
+
+                # run experimental function
+                _ = ai.experimental_function('resources/generated_images/img' + str(requests['n']-2) + '.png', 
+                                             'resources/generated_images/img' + str(requests['n']-1) + '.png', 
+                                             requests['prompt'], requests['n'])
+
             else:
                 # if any other case, pass
                 pass

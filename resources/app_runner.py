@@ -74,6 +74,10 @@ layout = [[
                       [sg.Push(), sg.Button("unzoom", key='-UNZOOM-')],
                       
                       [blank_frame()],
+                      
+                      [sg.Push(), sg.Button("experimental mode", key='-EXP-')],
+
+                      [blank_frame()],
               
                   ], 
     

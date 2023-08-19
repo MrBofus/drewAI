@@ -71,6 +71,48 @@ def perturb_image(image, prompt, n):
     
     return 0
 
+# experimental function
+def experimental_function(image1, image2, prompt, n):
+
+
+    # defne mask, using transparent png in resources directory
+    mask = Image.open('resources/masking/mask.png')
+    
+    # define image to be unzoomed, and resize it slightly smaller
+    img = Image.open(path)
+    img = img.resize( (600, 600), Image.LANCZOS)
+    
+    # define new image, which is the mask overlayed with the smaller image
+    img_out = Image.new("RGBA", mask.size, (255, 255, 255, 0))
+    w, h = mask.size
+    img_out.paste(img, (int(w / 2 - 300), int(h / 2 - 300)))
+    
+    # save masked image to upload for unzoom
+    img_out.save('resources/masking/masked.png')
+
+    
+    
+    # add transparent mask around boarder of image 
+    if print_verbose: print_red('adding mask to ' + image)
+    add_mask(image)
+    
+    # genearte link to image on openai server given prompt and masked image
+    if print_verbose: print_red('generating response ' + str(n) + ' given prompt: \'' + prompt + '\'')
+    response = openai.Image.create_edit(
+      image=open("resources/masking/masked.png", "rb"),
+      mask=open("resources/masking/masked.png", "rb"),
+      prompt=prompt,
+      n=1,
+      size="1024x1024"
+    )
+    
+    # request image at link and save it as 'img[n].png'
+    link_to_image = response["data"][0]["url"]
+    if print_verbose: print_red('retrieving image at link: ' + link_to_image + '\n')
+    urllib.request.urlretrieve(link_to_image, "resources/generated_images/img" + str(n) + ".png")
+    
+    return 0
+
 
 
 ####################################################################################

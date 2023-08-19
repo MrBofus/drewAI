@@ -7,9 +7,8 @@ import openai
 import urllib.request
 from PIL import Image
 import os
+from resources.app_runner import print_verbose
 
-# print verbose activates the print statements in the app threads
-print_verbose = True
 
 # define function that uses ANSI escape code to print in red
 def print_red(text):

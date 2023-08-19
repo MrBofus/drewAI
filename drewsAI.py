@@ -9,11 +9,8 @@ import os
 import resources.ai_functions as ai
 import resources.thread_runner as tr
 import resources.app_runner as ar
+from resources.app_runner import print_verbose
 import queue
-
-# print verbose activates the print statements in the app threads
-print_verbose = True
-
 
 # check if generated_images directory is created, and, if not,
 # creates the directory
